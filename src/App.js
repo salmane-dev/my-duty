@@ -18,6 +18,7 @@ class App extends Component {
       // console.log('app constructor s')
       super(props)
       this.state = { title: " React ", isShowing: false }
+      this.state = { title: "quote", author: 'anonymous' }
       this.state = {  todos: [
          {
           id:uuidv4(),
@@ -45,7 +46,12 @@ class App extends Component {
     componentDidMount(){ 
         // axios.get('https://jsonplaceholder.typicode.com/todos?_limit=15')
         //     .then(res => this.setState({ todos :  res.data }))
-          
+
+           fetch( 'https://favqs.com/api/qotd')
+                .then(response => response.json())
+                .then((json) => this.setState({ quote :  json.quote.body, author: json.quote.author  }))
+        
+ 
     }
     
     componentDidUpdate(){
@@ -102,7 +108,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Hero />
+        <Hero quote={this.state.quote} author={this.state.author}/>
         <Duties />
         <Todos 
             todos={this.state.todos} 
@@ -114,7 +120,7 @@ class App extends Component {
         <AddTodo addone={ this.addone } addTodo={ this.addTodo } />
         <small className={ 'text-red-600 ' }> { } </small>  
         <br/>
- 
+        
       </div>
     );
   }

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component, props} from "react"
 import '../styles/main.css';
+ 
 
 
-function Hero() {
+function Hero(props) {
+  
+ 
   return (
     <div>
         <div className={firstdivStyle}>
@@ -11,12 +14,13 @@ function Hero() {
         </div>
 
           <div className={quoatStyle} style={{marginTop:'-60px'}}>
-            <q> Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iusto accusamus fuga.</q><br/>
-            <small className="float-right">Almotanabi </small>
+            <q> {props.quote} </q><br/>
+            <small className="float-right">{ props.author }</small>
           </div>
     </div>
   );
 }
+
 
 //tailwind css styling classes variables
 const firstdivStyle= ' h-40 pt-4 bg-gradient-to-r from-teal-400 to-blue-500'

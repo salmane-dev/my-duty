@@ -23,7 +23,7 @@ export class TodoItem extends Component {
 
 
     priroty = () => {
-        console.log(this.props.todo.title)
+     //   console.log(this.props.todo.title)
         if(this.props.todo.priority===1) return {color:'red'}
         if(this.props.todo.priority===2) return {color:'yellow'}
         if(this.props.todo.priority===3) return {color:'green'}
