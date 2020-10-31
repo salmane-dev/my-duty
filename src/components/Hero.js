@@ -1,4 +1,4 @@
-import React, { Component, props} from "react"
+import React from "react"
 import '../styles/main.css';
  
 
@@ -9,8 +9,8 @@ function Hero(props) {
   return (
     <div>
         <div className={firstdivStyle}>
-          <h2 className=" text-xl font-bold">this is america jaa jaa</h2> 
-          <h2 className=" text-base ">this is america jaa jaa</h2> 
+          <h2 className=" text-xl font-bold">{ props.date_Gregorian }</h2> 
+          <h2 className=" text-base ">{ props.date_hijri }</h2> 
         </div>
 
           <div className={quoatStyle} style={{marginTop:'-60px'}}>

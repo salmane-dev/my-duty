@@ -19,6 +19,7 @@ class App extends Component {
       super(props)
       this.state = { title: " React ", isShowing: false }
       this.state = { title: "quote", author: 'anonymous' }
+      this.state = { title: "dates", gregorian:'',  hijri:'' }
       this.state = {  todos: [
          {
           id:uuidv4(),
@@ -47,11 +48,15 @@ class App extends Component {
         // axios.get('https://jsonplaceholder.typicode.com/todos?_limit=15')
         //     .then(res => this.setState({ todos :  res.data }))
 
+        //get quote
            fetch( 'https://favqs.com/api/qotd')
                 .then(response => response.json())
                 .then((json) => this.setState({ quote :  json.quote.body, author: json.quote.author  }))
         
- 
+        //get date
+        let h_date = new Date().toLocaleDateString('ar-SA', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+        let g_date = new Date().toLocaleString('en-GB', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+        this.setState({dates: g_date, gregorian:g_date, hijri: h_date})
     }
     
     componentDidUpdate(){
@@ -108,7 +113,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Hero quote={this.state.quote} author={this.state.author}/>
+        <Hero 
+          quote={this.state.quote} 
+          author={this.state.author}
+          date_Gregorian={this.state.gregorian}
+          date_hijri={this.state.hijri}
+        />
         <Duties />
         <Todos 
             todos={this.state.todos} 
