@@ -12,7 +12,6 @@ import './App.css';
 import './styles/main.css';
 
 
-
 class App extends Component {
     constructor(props){
       // console.log('app constructor s')
@@ -26,19 +25,14 @@ class App extends Component {
           title: 'Dinner with the wife',
           completed: false ,
           priority: 1,
-          timestamp: Date().slice(16,21)
+          timestamp: Date().slice(16,21),
+          tasks :  ['d','dd','dddd']
         },
         {
           id:uuidv4(),
           title: 'Take out the trash',
           completed: false,
           priority: 2,
-          timestamp: Date().slice(16,21)
-        },{
-          id:uuidv4(),
-          title: 'fun with the kiddos',
-          completed: false,
-          priority: 3,
           timestamp: Date().slice(16,21)
         }
       ] }
@@ -73,7 +67,6 @@ class App extends Component {
       })
     }
 
-
     // delete todo 
     btndelete = (id) => {
 
@@ -100,7 +93,6 @@ class App extends Component {
     else{
         alert('will you type something please !?')
     }
-      
     }
 
     componentWillUnmount(){

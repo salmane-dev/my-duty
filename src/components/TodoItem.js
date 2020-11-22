@@ -36,11 +36,20 @@ export class TodoItem extends Component {
    }
 
 
+
+  
+   
+
     render() {
+        
+        this.props.todo.tasks.map((task) => (
+            console.log(task)  
+        ))
+
         return (
             <div >
                 <div className={ todoStyle } style={ this.MyStyles()} >
-                    <div className={' h-100'}>
+                    <div className={' h-100 left text-left'}>
                         <div>
                             <i className={ iconStyle } style={ this.Mytimes() }
                                 onClick={ this.props.btndelete.bind(this, this.props.todo.id) }>
@@ -59,15 +68,15 @@ export class TodoItem extends Component {
                             <i className={ avatarStyle }></i>
                         </div>
                         <div>
-                            <time className={'  '} >{this.props.todo.timestamp}</time>
+                            <time className={''} >{this.props.todo.timestamp}</time>
                         </div>
-
                     </div>
-                    <label className={' text-right  '} style={ this.Linethrough()} htmlFor={this.props.todo.id} >
+                    <label className={'text-right'} style={ this.Linethrough()} htmlFor={this.props.todo.id} >
                         <span className={'text-xl font-semibold'} >{this.props.todo.title}</span>
                         <i className={ 'fas fa-dot-circle ml-2 text-red-500 ' } style={ this.priroty() } > </i>
-                        <br/><small className={ 'float-right mr-2' }> qwod qwiodofh  sdf - </small>
-                        <br/><small className={ 'float-right mr-2' }> qwod qwiodofhhofqoiwf qasd asdffff -</small>
+                        <br/><small className={ 'float-right mr-2' }> { this.props.todo.tasks ? this.props.todo.tasks[0] : 'no tasks' } - </small>
+
+                        
                     </label>
                 </div>
             </div>
